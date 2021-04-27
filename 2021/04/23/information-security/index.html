@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Chao&#39;s Blog">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-04-23T05:50:00.000Z">
-<meta property="article:modified_time" content="2021-04-27T12:09:46.741Z">
+<meta property="article:modified_time" content="2021-04-27T12:44:33.655Z">
 <meta property="article:author" content="Chao">
 <meta property="article:tag" content="資安">
 <meta property="article:tag" content="PHP">
@@ -190,7 +190,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-04-27 20:09:46" itemprop="dateModified" datetime="2021-04-27T20:09:46+08:00">2021-04-27</time>
+                <time title="修改時間：2021-04-27 20:44:33" itemprop="dateModified" datetime="2021-04-27T20:44:33+08:00">2021-04-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -222,54 +222,95 @@
 
       
         <span id="more"></span>
-<h3 id="XSS-是什麼？會帶來什麼危險性？用-htmlentities-和-htmlspecialchars-這兩者的差別？"><a href="#XSS-是什麼？會帶來什麼危險性？用-htmlentities-和-htmlspecialchars-這兩者的差別？" class="headerlink" title="XSS 是什麼？會帶來什麼危險性？用 htmlentities 和 htmlspecialchars 這兩者的差別？"></a>XSS 是什麼？會帶來什麼危險性？用 htmlentities 和 htmlspecialchars 這兩者的差別？</h3><h5 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h5><p>User 可以塞 Javascript 在你的網站內。</p>
-<h5 id="可能的危害"><a href="#可能的危害" class="headerlink" title="可能的危害"></a>可能的危害</h5><p>User 可以執行任何 Javascript 做得到的事情。</p>
-<h5 id="htmlenties"><a href="#htmlenties" class="headerlink" title="htmlenties"></a>htmlenties</h5><p>將每一個字都編碼成 HTML Entity。</p>
-<h5 id="htmlspecialchars"><a href="#htmlspecialchars" class="headerlink" title="htmlspecialchars"></a>htmlspecialchars</h5><p>只轉換符號 &amp; “ ‘ &gt; &lt;</p>
+<h3 id="XSS-是什麼？會帶來什麼危險性？用-htmlentities-和-htmlspecialchars-這兩者的差別？"><a href="#XSS-是什麼？會帶來什麼危險性？用-htmlentities-和-htmlspecialchars-這兩者的差別？" class="headerlink" title="XSS 是什麼？會帶來什麼危險性？用 htmlentities 和 htmlspecialchars 這兩者的差別？"></a>XSS 是什麼？會帶來什麼危險性？用 htmlentities 和 htmlspecialchars 這兩者的差別？</h3><ul>
+<li><h5 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h5><p>User 可以塞 Javascript 在你的網站內。</p>
+</li>
+<li><h5 id="可能的危害"><a href="#可能的危害" class="headerlink" title="可能的危害"></a>可能的危害</h5><p>User 可以執行任何 Javascript 做得到的事情。</p>
+</li>
+<li><h5 id="htmlenties"><a href="#htmlenties" class="headerlink" title="htmlenties"></a>htmlenties</h5><p>將每一個字都編碼成 HTML Entity。</p>
+</li>
+<li><h5 id="htmlspecialchars"><a href="#htmlspecialchars" class="headerlink" title="htmlspecialchars"></a>htmlspecialchars</h5><p>只轉換符號 &amp; “ ‘ &gt; &lt;</p>
+</li>
+</ul>
 <p>多數防禦效果差不多，差別在編碼後檔案大小不一樣。</p>
-<h3 id="LFI-是什麼？除了被-access-到-etc-passwd-之外，有沒有可能讓-source-code-洩露？"><a href="#LFI-是什麼？除了被-access-到-etc-passwd-之外，有沒有可能讓-source-code-洩露？" class="headerlink" title="LFI 是什麼？除了被 access 到 /etc/passwd 之外，有沒有可能讓 source code 洩露？"></a>LFI 是什麼？除了被 access 到 /etc/passwd 之外，有沒有可能讓 source code 洩露？</h3><h5 id="LFI"><a href="#LFI" class="headerlink" title="LFI"></a>LFI</h5><p>User 可以隨意讀取你的路徑檔案。</p>
-<h5 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h5><p>a.php?file=aaa.doc  =&gt; 取得 aaa.doc<br>a.php?file=a.php    =&gt; 取得 Source Code<br>讀取 .git/ 把整個 repo 拿走</p>
-<h3 id="SQL-Injection-的原理是？用-PDO-真的可以一勞永逸嗎？-mysqli-real-escape-string-真的有助於防止-SQL-injection-嗎？"><a href="#SQL-Injection-的原理是？用-PDO-真的可以一勞永逸嗎？-mysqli-real-escape-string-真的有助於防止-SQL-injection-嗎？" class="headerlink" title="SQL Injection 的原理是？用 PDO 真的可以一勞永逸嗎？ mysqli_real_escape_string 真的有助於防止 SQL injection 嗎？"></a>SQL Injection 的原理是？用 PDO 真的可以一勞永逸嗎？ mysqli_real_escape_string 真的有助於防止 SQL injection 嗎？</h3><h5 id="SQL-Injection"><a href="#SQL-Injection" class="headerlink" title="SQL Injection"></a>SQL Injection</h5><p>直接使用 User 傳輸的參數組 SQL，導致 User 可以透過額外 SQL 語法為所欲為。</p>
-<h5 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$id</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;id&#x27;</span>];  <span class="comment">// &#x27;123or1=1&#x27;</span></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;select * from user where id = <span class="subst">&#123;$id&#125;</span>&quot;</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="LFI-是什麼？除了被-access-到-etc-passwd-之外，有沒有可能讓-source-code-洩露？"><a href="#LFI-是什麼？除了被-access-到-etc-passwd-之外，有沒有可能讓-source-code-洩露？" class="headerlink" title="LFI 是什麼？除了被 access 到 /etc/passwd 之外，有沒有可能讓 source code 洩露？"></a>LFI 是什麼？除了被 access 到 /etc/passwd 之外，有沒有可能讓 source code 洩露？</h3><ul>
+<li><h5 id="LFI"><a href="#LFI" class="headerlink" title="LFI"></a>LFI</h5><p>User 可以隨意讀取你的路徑檔案。</p>
+</li>
+<li><h5 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h5><p>a.php?file=aaa.doc  =&gt; 取得 aaa.doc<br>a.php?file=a.php    =&gt; 取得 Source Code<br>讀取 .git/ 把整個 repo 拿走</p>
+</li>
+</ul>
+<h3 id="SQL-Injection-的原理是？用-PDO-真的可以一勞永逸嗎？-mysqli-real-escape-string-真的有助於防止-SQL-injection-嗎？"><a href="#SQL-Injection-的原理是？用-PDO-真的可以一勞永逸嗎？-mysqli-real-escape-string-真的有助於防止-SQL-injection-嗎？" class="headerlink" title="SQL Injection 的原理是？用 PDO 真的可以一勞永逸嗎？ mysqli_real_escape_string 真的有助於防止 SQL injection 嗎？"></a>SQL Injection 的原理是？用 PDO 真的可以一勞永逸嗎？ mysqli_real_escape_string 真的有助於防止 SQL injection 嗎？</h3><ul>
+<li><h5 id="SQL-Injection"><a href="#SQL-Injection" class="headerlink" title="SQL Injection"></a>SQL Injection</h5><p>直接使用 User 傳輸的參數組 SQL，導致 User 可以透過額外 SQL 語法為所欲為。</p>
+</li>
+<li><h5 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$id</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;id&#x27;</span>];  <span class="comment">// &#x27;123or1=1&#x27;</span></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;select * from user where id = <span class="subst">&#123;$id&#125;</span>&quot;</span>;</span><br></pre></td></tr></table></figure>
 <p>出來會是 </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * <span class="keyword">from</span> user where id = <span class="number">123</span>or1=<span class="number">1</span></span><br></pre></td></tr></table></figure>
-
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * <span class="keyword">from</span> user where id = <span class="number">123</span>or1=<span class="number">1</span></span><br></pre></td></tr></table></figure></li>
+</ul>
 <p>User 取得了所有的使用者資料，<br>這個例子用 mysqli_real_escape_string 無法解決。</p>
-<h5 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h5><p>不直接使用 User 傳輸的參數組 SQL，而是用 prepared statement，透過 bind 的方式組合 SQL。</p>
-<h5 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h5><p>PDO 的 mysql driver 預設是模擬的，不是真的呼叫 DB 做 prepared statement。<br>可以用 PDO::ATTR_EMULATE_PREPARES 這個選項切換。</p>
+<ul>
+<li><h5 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h5><p>不直接使用 User 傳輸的參數組 SQL，而是用 prepared statement，透過 bind 的方式組合 SQL。</p>
+</li>
+<li><h5 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h5><p>PDO 的 mysql driver 預設是模擬的，不是真的呼叫 DB 做 prepared statement。<br>可以用 PDO::ATTR_EMULATE_PREPARES 這個選項切換。</p>
+</li>
+</ul>
 <p>Laravel 內部做 PDO 的時候會強制設定用真的 prepared statement<br>doctrine 的 dbal 跟 maghead 乍看之下沒有管這件事</p>
-<h3 id="什麼是-SSRF？會讓系統服務遭受什麼樣的風險？"><a href="#什麼是-SSRF？會讓系統服務遭受什麼樣的風險？" class="headerlink" title="什麼是 SSRF？會讓系統服務遭受什麼樣的風險？"></a>什麼是 SSRF？會讓系統服務遭受什麼樣的風險？</h3><h5 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h5><p>User 以你的 Server 為跳板，發送他的 Request 給其他機器。</p>
-<h5 id="例子-2"><a href="#例子-2" class="headerlink" title="例子"></a>例子</h5><p>抓檔案的 URL 如果可以自己亂填<br>upload_image.php?url=<a target="_blank" rel="noopener" href="https://example.com/porn.png">https://example.com/porn.png</a></p>
+<h3 id="什麼是-SSRF？會讓系統服務遭受什麼樣的風險？"><a href="#什麼是-SSRF？會讓系統服務遭受什麼樣的風險？" class="headerlink" title="什麼是 SSRF？會讓系統服務遭受什麼樣的風險？"></a>什麼是 SSRF？會讓系統服務遭受什麼樣的風險？</h3><ul>
+<li><h5 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h5><p>User 以你的 Server 為跳板，發送他的 Request 給其他機器。</p>
+</li>
+<li><h5 id="例子-2"><a href="#例子-2" class="headerlink" title="例子"></a>例子</h5><p>抓檔案的 URL 如果可以自己亂填<br>upload_image.php?url=<a target="_blank" rel="noopener" href="https://example.com/porn.png">https://example.com/porn.png</a></p>
+</li>
+</ul>
 <p>當 User 在 url 這個參數亂連別人機器幹壞事</p>
 <p>upload_image.php?url=<a target="_blank" rel="noopener" href="https://dashboard.example.com/">https://dashboard.example.com/</a><br>upload_image.php?url=<a target="_blank" rel="noopener" href="http://127.0.0.1/">http://127.0.0.1/</a></p>
-<h5 id="解決方法-1"><a href="#解決方法-1" class="headerlink" title="解決方法"></a>解決方法</h5><p>建立黑名單、白名單</p>
-<h3 id="extract-這個函式很好用，但會不會不知不覺間被拿來提權？"><a href="#extract-這個函式很好用，但會不會不知不覺間被拿來提權？" class="headerlink" title="extract 這個函式很好用，但會不會不知不覺間被拿來提權？"></a>extract 這個函式很好用，但會不會不知不覺間被拿來提權？</h3><h5 id="extract"><a href="#extract" class="headerlink" title="extract"></a>extract</h5><p>陣列 array 轉換成變數</p>
+<ul>
+<li><h5 id="解決方法-1"><a href="#解決方法-1" class="headerlink" title="解決方法"></a>解決方法</h5>建立黑名單、白名單</li>
+</ul>
+<h3 id="extract-這個函式很好用，但會不會不知不覺間被拿來提權？"><a href="#extract-這個函式很好用，但會不會不知不覺間被拿來提權？" class="headerlink" title="extract 這個函式很好用，但會不會不知不覺間被拿來提權？"></a>extract 這個函式很好用，但會不會不知不覺間被拿來提權？</h3><ul>
+<li><h5 id="extract"><a href="#extract" class="headerlink" title="extract"></a>extract</h5>陣列 array 轉換成變數</li>
+</ul>
 <p>PHP 基本用法</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$id</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;account&#x27;</span>];     <span class="comment">// 取得表單 name 為 account 的內容</span></span><br><span class="line"><span class="variable">$pw</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>];    <span class="comment">// 取得表單 name 為 password 的內容</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$id</span> == <span class="string">&#x27;史蒂夫&#x27;</span>) &#123;        </span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$pw</span> == <span class="string">&#x27;123&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;歡迎&quot;</span>.<span class="variable">$id</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;密碼錯誤&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;帳號錯誤&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>使用 Extract Function</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">extract(<span class="variable">$_GET</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="variable">$account</span> == <span class="string">&#x27;史蒂夫&#x27;</span>) &#123;        </span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$password</span> == <span class="string">&#x27;123&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;歡迎&quot;</span>.<span class="variable">$account</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;密碼錯誤&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;帳號錯誤&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h5 id="可能的危害-1"><a href="#可能的危害-1" class="headerlink" title="可能的危害"></a>可能的危害</h5><p>直接使用 extract 的話，已經存在的變數會被取代。<br>例如使用 extract($_GET) 時，User 就可以透過亂打網址更改 code 的變數內容，衍伸各種問題。</p>
-<h3 id="serialize-跟-unserialize-的使用時要注意什麼？"><a href="#serialize-跟-unserialize-的使用時要注意什麼？" class="headerlink" title="serialize 跟 unserialize 的使用時要注意什麼？"></a>serialize 跟 unserialize 的使用時要注意什麼？</h3><h5 id="可能的危害-2"><a href="#可能的危害-2" class="headerlink" title="可能的危害"></a>可能的危害</h5><p>unserialize 可能會發生 PHP 對象注入，PHP對象注入可以導致代碼執行，SQL注入，路徑遍歷或DoS。</p>
+<ul>
+<li><h5 id="可能的危害-1"><a href="#可能的危害-1" class="headerlink" title="可能的危害"></a>可能的危害</h5>直接使用 extract 的話，已經存在的變數會被取代。<br>例如使用 extract($_GET) 時，User 就可以透過亂打網址更改 code 的變數內容，衍伸各種問題。</li>
+</ul>
+<h3 id="serialize-跟-unserialize-的使用時要注意什麼？"><a href="#serialize-跟-unserialize-的使用時要注意什麼？" class="headerlink" title="serialize 跟 unserialize 的使用時要注意什麼？"></a>serialize 跟 unserialize 的使用時要注意什麼？</h3><ul>
+<li><h5 id="可能的危害-2"><a href="#可能的危害-2" class="headerlink" title="可能的危害"></a>可能的危害</h5>unserialize 可能會發生 PHP 對象注入，PHP對象注入可以導致代碼執行，SQL注入，路徑遍歷或DoS。</li>
+</ul>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example2</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$hook</span> = <span class="string">&quot;phpinfo()&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">print</span> urlencode(serialize(<span class="keyword">new</span> Eexample2));</span><br></pre></td></tr></table></figure>
 
 <p>然後將上面生成的字符串傳遞到數據 cookie 中將導致 phpinfo() 被執行。<br>一旦攻擊者將序列化的對象傳遞到程序中，將引起以下問題： </p>
 <ul>
-<li>攻擊者將序列化的 Example2 對象作為數據 cookie 傳遞到程序中；</li>
-<li>該程序在數據 cookie 上調用 unserialize()；</li>
-<li>因為數據 cookie 是序列化的 Example2 對象，所以 unserialize() 實例化一個新的 Example2 對象；</li>
-<li>unserialize() 看到 Example2 類執行了 _wakeup()，因此調用了 _wakeup()。</li>
-<li>_wakeup() 尋找對象的 hook 屬性，如果它不是 NULL，它將運行 eval($hook)），但 hook 不是 NULL，並設置為 “phpinfo();”，則執行 eval(“phpinfo();”)</li>
-<li>可以實現RCE。</li>
+<li><p>攻擊者將序列化的 Example2 對象作為數據 cookie 傳遞到程序中；</p>
+</li>
+<li><p>該程序在數據 cookie 上調用 unserialize()；</p>
+</li>
+<li><p>因為數據 cookie 是序列化的 Example2 對象，所以 unserialize() 實例化一個新的 Example2 對象；</p>
+</li>
+<li><p>unserialize() 看到 Example2 類執行了 _wakeup()，因此調用了 _wakeup()。</p>
+</li>
+<li><p>_wakeup() 尋找對象的 hook 屬性，如果它不是 NULL，它將運行 eval($hook)），但 hook 不是 NULL，並設置為 “phpinfo();”，則執行 eval(“phpinfo();”)</p>
+</li>
+<li><p>可以實現RCE。</p>
+</li>
+<li><h5 id="解決方法-2"><a href="#解決方法-2" class="headerlink" title="解決方法"></a>解決方法</h5><p>不要將不受信任的用戶輸入傳遞給unserialize()。</p>
+</li>
 </ul>
-<h5 id="解決方法-2"><a href="#解決方法-2" class="headerlink" title="解決方法"></a>解決方法</h5><p>不要將不受信任的用戶輸入傳遞給unserialize()。</p>
 <h3 id="json-encode-跟-json-decode-有什麼潛在問題嗎？有沒有可能造成-DoS？"><a href="#json-encode-跟-json-decode-有什麼潛在問題嗎？有沒有可能造成-DoS？" class="headerlink" title="json_encode 跟 json_decode 有什麼潛在問題嗎？有沒有可能造成 DoS？"></a>json_encode 跟 json_decode 有什麼潛在問題嗎？有沒有可能造成 DoS？</h3><p>反序列化可能會造成魔幻函數執行</p>
-<h3 id="什麼是-race-codition？在-PHP-MySQL-這樣的經典組合中有沒有可能出現？要如何解決？"><a href="#什麼是-race-codition？在-PHP-MySQL-這樣的經典組合中有沒有可能出現？要如何解決？" class="headerlink" title="什麼是 race codition？在 PHP + MySQL 這樣的經典組合中有沒有可能出現？要如何解決？"></a>什麼是 race codition？在 PHP + MySQL 這樣的經典組合中有沒有可能出現？要如何解決？</h3><h5 id="race-codition"><a href="#race-codition" class="headerlink" title="race codition"></a>race codition</h5><p>雷姆揍我右臉，我會往左邊飛<br>拉姆揍我左臉，我會往右邊飛<br>他們揍我的速度夠快，我被揍飛另一個揮拳就會落空<br>當雷姆跟拉姆幾乎同時出拳揍我，我可能往左邊飛，也可能往右邊飛，難以預測</p>
+<h3 id="什麼是-race-codition？在-PHP-MySQL-這樣的經典組合中有沒有可能出現？要如何解決？"><a href="#什麼是-race-codition？在-PHP-MySQL-這樣的經典組合中有沒有可能出現？要如何解決？" class="headerlink" title="什麼是 race codition？在 PHP + MySQL 這樣的經典組合中有沒有可能出現？要如何解決？"></a>什麼是 race codition？在 PHP + MySQL 這樣的經典組合中有沒有可能出現？要如何解決？</h3><ul>
+<li><h5 id="race-codition"><a href="#race-codition" class="headerlink" title="race codition"></a>race codition</h5>雷姆揍我右臉，我會往左邊飛<br>拉姆揍我左臉，我會往右邊飛<br>他們揍我的速度夠快，我被揍飛另一個揮拳就會落空<br>當雷姆跟拉姆幾乎同時出拳揍我，我可能往左邊飛，也可能往右邊飛，難以預測</li>
+</ul>
 <p>race condition 就是指這種狀況</p>
-<h5 id="可能的危害-3"><a href="#可能的危害-3" class="headerlink" title="可能的危害"></a>可能的危害</h5><p>PHP 本身原則上是單一 Process 在跑的，所以只有 PHP 不太容易碰到。<br>MySQL 比較常碰到是當 DB 規模大的時候，通常會讀寫分離到不同台機器上。<br>如果先做 update 然後又馬上 select，有可能 select 不到更新後的資料（還沒同步到所有機器</p>
+<ul>
+<li><h5 id="可能的危害-3"><a href="#可能的危害-3" class="headerlink" title="可能的危害"></a>可能的危害</h5>PHP 本身原則上是單一 Process 在跑的，所以只有 PHP 不太容易碰到。<br>MySQL 比較常碰到是當 DB 規模大的時候，通常會讀寫分離到不同台機器上。<br>如果先做 update 然後又馬上 select，有可能 select 不到更新後的資料（還沒同步到所有機器</li>
+</ul>
 <p>另外一個狀況是來自系統外部，例如 client 同時發兩個取 token 的 request<br>然後你不確定 client 會覺得自己取到哪個</p>
-<h5 id="解決方法-3"><a href="#解決方法-3" class="headerlink" title="解決方法"></a>解決方法</h5><p>設置 lock 確保一次只有一個人通過</p>
+<ul>
+<li><h5 id="解決方法-3"><a href="#解決方法-3" class="headerlink" title="解決方法"></a>解決方法</h5>設置 lock 確保一次只有一個人通過</li>
+</ul>
 <p>不讓拉姆跟雷姆有幾乎同時揍我的機會，就不會不知道自己被揍時會飛往何方</p>
 <h3 id="如何正確取得使用者的-IP？-SERVER-‘REMOTE-ADDR’-？如果商業邏輯伺服器是放在-LoadBalancer-之後呢？"><a href="#如何正確取得使用者的-IP？-SERVER-‘REMOTE-ADDR’-？如果商業邏輯伺服器是放在-LoadBalancer-之後呢？" class="headerlink" title="如何正確取得使用者的 IP？$_SERVER[‘REMOTE_ADDR’]？如果商業邏輯伺服器是放在 LoadBalancer 之後呢？"></a>如何正確取得使用者的 IP？$_SERVER[‘REMOTE_ADDR’]？如果商業邏輯伺服器是放在 LoadBalancer 之後呢？</h3><p>$_SERVER 裡面有很多欄位跟 client IP 有關</p>
 <p>REMOTE_ADDR<br>這是 server 看到當下 request 的來源 IP</p>
@@ -291,20 +332,32 @@
 <p>然後用這裡的範例檢查有沒有需要更新密碼 hash<br><a target="_blank" rel="noopener" href="http://php.net/manual/en/function.password-needs-rehash.php">http://php.net/manual/en/function.password-needs-rehash.php</a></p>
 <p>最後，PHP 升級你盡量跟著升級。</p>
 <h4 id="真正的答案："><a href="#真正的答案：" class="headerlink" title="真正的答案："></a>真正的答案：</h4><p>現代 hash 演算法的敵人主要有幾種</p>
-<h5 id="從數學，相對容易算出碰撞值"><a href="#從數學，相對容易算出碰撞值" class="headerlink" title="從數學，相對容易算出碰撞值"></a>從數學，相對容易算出碰撞值</h5><p>例如數學方法可以快速算出其他值的 hash 跟你密碼的 hash 一樣</p>
+<ul>
+<li><h5 id="從數學，相對容易算出碰撞值"><a href="#從數學，相對容易算出碰撞值" class="headerlink" title="從數學，相對容易算出碰撞值"></a>從數學，相對容易算出碰撞值</h5></li>
+</ul>
+<p>例如數學方法可以快速算出其他值的 hash 跟你密碼的 hash 一樣</p>
 <p>對應法：<br>選沒有已知攻擊的演算法</p>
 <ul>
 <li>md5 陣亡（2004的論文）</li>
 <li>sha1 進棺材了（同一個人寫過 sha1 的論文，Google 做過示範攻擊）</li>
 </ul>
 <p>還有，沒事就看一大堆講這種事情的文章….</p>
-<h5 id="從實作上被攻擊"><a href="#從實作上被攻擊" class="headerlink" title="從實作上被攻擊"></a>從實作上被攻擊</h5><p>有些實作有 side channel attack 的問題，例如可以從計算時間推算數值<br>甚至有些比較誇張的，可以錄你電腦的聲音推斷 CPU 多忙，猜出在算的值是什麼…</p>
+<ul>
+<li><h5 id="從實作上被攻擊"><a href="#從實作上被攻擊" class="headerlink" title="從實作上被攻擊"></a>從實作上被攻擊</h5></li>
+</ul>
+<p>有些實作有 side channel attack 的問題，例如可以從計算時間推算數值<br>甚至有些比較誇張的，可以錄你電腦的聲音推斷 CPU 多忙，猜出在算的值是什麼…</p>
 <p>對應法：<br>常常更新系統套件，用 libsodium 或是 PHP 5.5+ 的 password_ 系列 function 來算 hash<br>還有，沒事就看一大堆講這種事情的文章….</p>
-<h5 id="預先算好巨大的對應表（所謂-rainbow-table）"><a href="#預先算好巨大的對應表（所謂-rainbow-table）" class="headerlink" title="預先算好巨大的對應表（所謂 rainbow table）"></a>預先算好巨大的對應表（所謂 rainbow table）</h5><p>就是有人會先算好一大堆字串的 hash，做成查詢表方便對照。<br>所以看到 7c4a8d09ca3762af61e59520943dc26494f8941b 可以直接查出這是 123456 的 sha1</p>
+<ul>
+<li><h5 id="預先算好巨大的對應表（所謂-rainbow-table）"><a href="#預先算好巨大的對應表（所謂-rainbow-table）" class="headerlink" title="預先算好巨大的對應表（所謂 rainbow table）"></a>預先算好巨大的對應表（所謂 rainbow table）</h5></li>
+</ul>
+<p>就是有人會先算好一大堆字串的 hash，做成查詢表方便對照。<br>所以看到 7c4a8d09ca3762af61e59520943dc26494f8941b 可以直接查出這是 123456 的 sha1</p>
 <p>是說，有個網站叫做 CrackStation，線上讓你查 hash 對應表..</p>
 <p>對應法：<br>內容加鹽或是給 iv，每筆資料的鹽或 iv 都要都不一樣，而且要夠長<br>這會讓對應表很難做</p>
 <p>也可以用 PHP 5.5+ 的 password_ 系列算，他預設會隨機產鹽撒進資料來算 hash</p>
-<h5 id="用巨大的運算力量暴力硬算"><a href="#用巨大的運算力量暴力硬算" class="headerlink" title="用巨大的運算力量暴力硬算"></a>用巨大的運算力量暴力硬算</h5><p>通常是雲端出租 GPU，也有靠 ASIC 之類的專門機器。<br>感謝數位挖礦產業，這方面的技術突飛猛進…</p>
+<ul>
+<li><h5 id="用巨大的運算力量暴力硬算"><a href="#用巨大的運算力量暴力硬算" class="headerlink" title="用巨大的運算力量暴力硬算"></a>用巨大的運算力量暴力硬算</h5></li>
+</ul>
+<p>通常是雲端出租 GPU，也有靠 ASIC 之類的專門機器。<br>感謝數位挖礦產業，這方面的技術突飛猛進…</p>
 <p>對應法：<br>選難以平行化運算的，記憶體使用量大的，計算效能差的<br>然後也許因此不該選 sha256，因為 bitcoin 挖礦就是在算 sha256，有利可圖就有專門產業…</p>
 <p>bcrypt 是前幾年的佼佼者，而 argon2 是最近幾年的國際 hash 比賽冠軍。<br>PHP 預設的密碼 hash PASSWORD_DEFAULT 應該還是 bcrypt</p>
 <p>有找到 PHP 的 RFC 提到「暫時不把 PASSWORD_DEFAULT 改成 ARGON2」<br><a target="_blank" rel="noopener" href="https://wiki.php.net/rfc/argon2_password_hash">https://wiki.php.net/rfc/argon2_password_hash</a><br>不過理由我一下沒找到</p>
