@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Chao&#39;s Blog">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-04-23T05:50:00.000Z">
-<meta property="article:modified_time" content="2021-04-27T07:59:51.648Z">
+<meta property="article:modified_time" content="2021-04-27T11:29:53.021Z">
 <meta property="article:author" content="Chao">
 <meta property="article:tag" content="資安">
 <meta property="article:tag" content="PHP">
@@ -190,7 +190,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-04-27 15:59:51" itemprop="dateModified" datetime="2021-04-27T15:59:51+08:00">2021-04-27</time>
+                <time title="修改時間：2021-04-27 19:29:53" itemprop="dateModified" datetime="2021-04-27T19:29:53+08:00">2021-04-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -223,7 +223,10 @@
 <h3 id="LFI-是什麼？除了被-access-到-etc-passwd-之外，有沒有可能讓-source-code-洩露？"><a href="#LFI-是什麼？除了被-access-到-etc-passwd-之外，有沒有可能讓-source-code-洩露？" class="headerlink" title="LFI 是什麼？除了被 access 到 /etc/passwd 之外，有沒有可能讓 source code 洩露？"></a>LFI 是什麼？除了被 access 到 /etc/passwd 之外，有沒有可能讓 source code 洩露？</h3><h5 id="LFI"><a href="#LFI" class="headerlink" title="LFI"></a>LFI</h5><p>User 可以隨意讀取你的路徑檔案。</p>
 <h5 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h5><p>a.php?file=aaa.doc  =&gt; 取得 aaa.doc<br>a.php?file=a.php    =&gt; 取得 Source Code<br>讀取 .git/ 把整個 repo 拿走</p>
 <h3 id="SQL-Injection-的原理是？用-PDO-真的可以一勞永逸嗎？-mysqli-real-escape-string-真的有助於防止-SQL-injection-嗎？"><a href="#SQL-Injection-的原理是？用-PDO-真的可以一勞永逸嗎？-mysqli-real-escape-string-真的有助於防止-SQL-injection-嗎？" class="headerlink" title="SQL Injection 的原理是？用 PDO 真的可以一勞永逸嗎？ mysqli_real_escape_string 真的有助於防止 SQL injection 嗎？"></a>SQL Injection 的原理是？用 PDO 真的可以一勞永逸嗎？ mysqli_real_escape_string 真的有助於防止 SQL injection 嗎？</h3><h5 id="SQL-Injection"><a href="#SQL-Injection" class="headerlink" title="SQL Injection"></a>SQL Injection</h5><p>直接使用 User 傳輸的參數組 SQL，導致 User 可以透過額外 SQL 語法為所欲為。</p>
-<h5 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h5><p>$id = $_POST[‘id’];  // ‘123or1=1’<br>$sql = “select * from user where id = {$id}”;<br>出來會是 select * from user where id = 123or1=1</p>
+<h5 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$id</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;id&#x27;</span>];  <span class="comment">// &#x27;123or1=1&#x27;</span></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;select * from user where id = <span class="subst">&#123;$id&#125;</span>&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>出來會是 </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * <span class="keyword">from</span> user where id = <span class="number">123</span>or1=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
 <p>User 取得了所有的使用者資料，<br>這個例子用 mysqli_real_escape_string 無法解決。</p>
 <h5 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h5><p>不直接使用 User 傳輸的參數組 SQL，而是用 prepared statement，透過 bind 的方式組合 SQL。</p>
 <h5 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h5><p>PDO 的 mysql driver 預設是模擬的，不是真的呼叫 DB 做 prepared statement。<br>可以用 PDO::ATTR_EMULATE_PREPARES 這個選項切換。</p>
@@ -235,36 +238,11 @@
 <h5 id="解決方法-1"><a href="#解決方法-1" class="headerlink" title="解決方法"></a>解決方法</h5><p>建立黑名單、白名單</p>
 <h3 id="extract-這個函式很好用，但會不會不知不覺間被拿來提權？"><a href="#extract-這個函式很好用，但會不會不知不覺間被拿來提權？" class="headerlink" title="extract 這個函式很好用，但會不會不知不覺間被拿來提權？"></a>extract 這個函式很好用，但會不會不知不覺間被拿來提權？</h3><h5 id="extract"><a href="#extract" class="headerlink" title="extract"></a>extract</h5><p>陣列 array 轉換成變數</p>
 <p>PHP 基本用法</p>
-<pre><code class="php">&lt;?php
-    $id = $_GET[&#39;account&#39;];    //取得表單 name 為 account 的內容
-    $pw = $_GET[&#39;password&#39;];   //取得表單 name 為 password 的內容
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$id</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;account&#x27;</span>];    <span class="comment">//取得表單 name 為 account 的內容</span></span><br><span class="line"><span class="variable">$pw</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>];   <span class="comment">//取得表單 name 為 password 的內容</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$id</span> == <span class="string">&#x27;史蒂夫&#x27;</span>)&#123;        </span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$pw</span> == <span class="string">&#x27;123&#x27;</span>)&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;歡迎&quot;</span>.<span class="variable">$id</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;密碼錯誤&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;帳號錯誤&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    if($id == &#39;史蒂夫&#39;)&#123;        
-        if($pw == &#39;123&#39;)&#123;
-            echo &quot;歡迎&quot;.$id;
-        &#125;else&#123;
-            echo &quot;密碼錯誤&quot;;
-        &#125;
-    &#125;else&#123;
-        echo &quot;帳號錯誤&quot;;
-    &#125;
-?&gt;  
-</code></pre>
 <p>使用 Extract Function</p>
-<pre><code class="php">&lt;?php
-    extract($_GET);
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">extract(<span class="variable">$_GET</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$account</span> == <span class="string">&#x27;史蒂夫&#x27;</span>)&#123;        </span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$password</span> == <span class="string">&#x27;123&#x27;</span>)&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;歡迎&quot;</span>.<span class="variable">$account</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;密碼錯誤&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;帳號錯誤&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    if($account == &#39;史蒂夫&#39;)&#123;        
-        if($password == &#39;123&#39;)&#123;
-            echo &quot;歡迎&quot;.$account;
-        &#125;else&#123;
-            echo &quot;密碼錯誤&quot;;
-        &#125;
-    &#125;else&#123;
-        echo &quot;帳號錯誤&quot;;
-    &#125;
-?&gt;
-</code></pre>
 <h5 id="可能的危害-1"><a href="#可能的危害-1" class="headerlink" title="可能的危害"></a>可能的危害</h5><p>直接使用 extract 的話，已經存在的變數會被取代。<br>例如使用 extract($_GET) 時，User 就可以透過亂打網址更改 code 的變數內容，衍伸各種問題。</p>
 <h3 id="serialize-跟-unserialize-的使用時要注意什麼？"><a href="#serialize-跟-unserialize-的使用時要注意什麼？" class="headerlink" title="serialize 跟 unserialize 的使用時要注意什麼？"></a>serialize 跟 unserialize 的使用時要注意什麼？</h3><p>唔…我原本猜你指的是「unserialize 的東西可能是別人家過料的，然後就可以亂改變數內容」<br>類似 extract 的狀況</p>
 <p>不過為防萬一找了一下，發現 PHP 跟 unserialize() 有關的安全漏洞還真不少….</p>
